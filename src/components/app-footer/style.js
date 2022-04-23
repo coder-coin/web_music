@@ -19,6 +19,7 @@ export const FooterWarpperLeft = styled.div`
     .copy {
         display: flex;
         flex-flow: row;
+        justify-content: space-between;
         a {
             color: #999;
         }

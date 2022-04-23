@@ -7,10 +7,10 @@ const LAppFooter = memo(() => {
     const getFooterBarListItem = (item, index) => {
         if (index <= 6) {
             return (
-                <span key={item.link}>
+                <div key={item.link}>
                     <a href={item.link}>{item.title}</a>
                     <span>|</span>
-                </span>
+                </div>
             )
         } else {
             return <a key={item.link} href={item.link}>{item.title}</a>
@@ -21,13 +21,13 @@ const LAppFooter = memo(() => {
         <FooterWarpper>
             <div className='content wrap-v2'>
                 <FooterWarpperLeft>
-                    <p className='copy'>
+                    <div className='copy'>
                         {
                             footerBarLinkList.map((item, index) => {
                                 return getFooterBarListItem(item, index)
                             })
                         }
-                    </p>
+                    </div>
                     <p className='footer-left-info-first'>
                         <span>网易公司版权所有©1997-2022</span>
                         <span>杭州乐读科技有限公司运营：</span>
