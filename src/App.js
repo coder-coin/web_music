@@ -1,8 +1,14 @@
 import React, { memo } from 'react'
-
+import LAppHeader from 'components/app-header'
+import useMusicRouter from '@/router'
+import LAppFooter from 'components/app-footer'
 const App = memo(() => {
   return (
-    <div>App</div>
+    <div>
+      <LAppHeader />
+      {useMusicRouter()}
+      <LAppFooter />
+    </div>
   )
 })
 
