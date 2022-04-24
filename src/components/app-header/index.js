@@ -25,7 +25,7 @@ const LAppHeader = memo(() => {
             <div className='content wrap-v1'>
                 <HeaderWrapperLeft>
                     <h1 className='logo sprite_01'>
-                        <a href='/#'>网易云音乐</a>
+                        <a href='/'>网易云音乐</a>
                     </h1>
                     <ul className='bar-item-list'>
                         {
@@ -45,8 +45,6 @@ const LAppHeader = memo(() => {
                     <NavLink className='login-btn' to='/'>登录</NavLink>
                 </HeaderWrapperRight>
             </div>
-            <div className='bar-bottom'></div>
-
         </HeaderWrapper>
     )
 })

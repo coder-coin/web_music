@@ -1,7 +1,7 @@
 export const headerBarLinkList = [
     {
         title: '发现音乐',
-        link: '/'
+        link: '/discover'
     },
     {
         title: '我的音乐',
@@ -51,4 +51,31 @@ export const footerBarLinkList = [
         link: 'https://mp.music.163.com/600948c936c13f4d09752e73/contact-us-web/index.html?source=Music-Main-Station'
     },
 
+]
+
+export const discoverTopMenuLinkList = [
+    {
+        title: '推荐',
+        link: 'recommend'
+    },
+    {
+        title: '排行',
+        link: 'toplist'
+    },
+    {
+        title: '歌单',
+        link: 'playlist'
+    },
+    {
+        title: '主播电台',
+        link: 'djradio'
+    },
+    {
+        title: '歌手',
+        link: 'artist'
+    },
+    {
+        title: '新碟上架',
+        link: 'album'
+    },
 ]
