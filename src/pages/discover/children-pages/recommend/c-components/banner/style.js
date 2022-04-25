@@ -2,21 +2,20 @@ import styled from 'styled-components'
 import download from '@/assets/img/download.png'
 import btn from '@/assets/img/banner-btn.png'
 export const BannerWrapper = styled.div`
-    position: relative;
-    height: 285px;
+    background: url(${props => props.bgImage}) center center / 6000px;
     .banner {
         display: flex;
         position: relative;
-        height: 100%;
+        height: 285px;
     }
 `
 export const BannerLeft = styled.div`
      width:730px;
-     height: 100%;
     .banner-item {
         overflow: hidden;
+        height: 285px;
         .image {
-            height: 285px;
+            height: 100%;
             width: 100%;
         }
     }

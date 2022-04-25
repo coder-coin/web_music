@@ -24,10 +24,10 @@ const LDiscover = memo(() => {
               })
             }
           </ul>
-
         </TopMenu>
+
       </div>
-      <DiscoverContentWrapper className='wrap-v2'>
+      <DiscoverContentWrapper>
         <Outlet />
       </DiscoverContentWrapper>
 

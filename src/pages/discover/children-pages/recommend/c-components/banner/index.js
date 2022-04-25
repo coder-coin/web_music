@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react'
+import React, { memo, useState, useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 
@@ -11,6 +11,8 @@ import {
 } from './style'
 import { Carousel } from 'antd'
 const LRecommendBanner = memo(() => {
+    //保存当前轮播图的index
+    const [currentIndex, setCurrentIndex] = useState(0)
     const { topBanner } = useSelector(state => ({
         // topBanner: state.get('recommend').get('topBanner')
         topBanner: state.getIn(['recommend', 'topBanner'])
@@ -20,15 +22,20 @@ const LRecommendBanner = memo(() => {
     useEffect(() => {
         dispatch(getRecommendBannerAction())
     }, [dispatch])
-
     //获取轮播图组件
     const bannerRef = useRef()
-    //jsx
+    const getCurrentIndex = useCallback((from, to) => {
+        setCurrentIndex(to)
+    }, [])
+
+    //实现毛玻璃效果
+    const bgImage = topBanner[currentIndex] && (topBanner[currentIndex].imageUrl + `?imageView&blur=40x20`)
+    //视图
     return (
-        <BannerWrapper>
+        <BannerWrapper bgImage={bgImage}>
             <div className='banner wrap-v2'>
                 <BannerLeft>
-                    <Carousel effect="fade" autoplay ref={bannerRef}>
+                    <Carousel effect="fade" autoplay ref={bannerRef} beforeChange={getCurrentIndex}>
                         {
                             topBanner.map((item, index) => {
                                 return (
