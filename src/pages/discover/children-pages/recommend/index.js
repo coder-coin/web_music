@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import LRecommendBanner from './c-components/banner'
 import LHotRecommend from './c-components/hot-recommend'
 import LNewAlbumRecommend from './c-components/new-album'
-import LRankRecommend from './c-components/rank-recommend'
+import LTopListRecommend from './c-components/top-list'
 import {
     RecommendWrapped,
     RecommendContent,
@@ -17,7 +17,7 @@ const LRecommend = memo(() => {
                 <RecommendContentLeft>
                     <LHotRecommend />
                     <LNewAlbumRecommend />
-                    <LRankRecommend />
+                    <LTopListRecommend />
                 </RecommendContentLeft>
                 <RecommendContentRight>
 

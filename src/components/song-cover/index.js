@@ -5,19 +5,19 @@ import {
 } from './style'
 const LSongCover = memo((props) => {
     const { info } = props
-    //判断是否是top级别的播放量
-    const judgePlayCount = (playCount) => {
-        if (Math.floor(info.playCount / 10000) >= 2000) {
-            return true
-        } else {
-            return false
+
+    //top icon组件，播放量大于2000万显示
+    const TopIcon = (props) => {
+        const { playCount } = props
+        if (Math.floor(playCount / 10000) >= 2000) {
+            return <i className='top-icon-active sprite_icon2'></i>
         }
     }
     return (
         <SongCoverWrapper>
             <div className='song-cover-top'>
                 <img src={imageSizeFormat(info.picUrl, 140)} alt={info.name}></img>
-                <i className={judgePlayCount(info.playCount) ? `top-icon-active` : `top-icon-unactive`}></i>
+                <TopIcon playCount={info.playCount} />
                 <a href='/#' className='song-cover-mask sprite_cover'>封面</a>
                 <div className='song-cover-bottom sprite_cover'>
                     <span>

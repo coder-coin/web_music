@@ -17,7 +17,17 @@ export const SongCoverWrapper = styled.div`
         cursor: pointer;
     }
 
-    
+    .top-icon-active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        background-position: -135px -220px;
+    }
+    .top-icon-unactive{
+        display: none;
+    }
     .song-cover-mask {
         position: absolute;
         top: 0;
