@@ -35,7 +35,13 @@ const LRecommendBanner = memo(() => {
         <BannerWrapper bgImage={bgImage}>
             <div className='banner wrap-v2'>
                 <BannerLeft>
-                    <Carousel effect="fade" autoplay ref={bannerRef} beforeChange={getCurrentIndex}>
+                    <Carousel
+                        effect="fade"
+                        autoplay
+                        ref={bannerRef}
+                        beforeChange={getCurrentIndex}
+                        autoplaySpeed={5000}
+                    >
                         {
                             topBanner.map((item, index) => {
                                 return (

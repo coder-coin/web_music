@@ -115,7 +115,9 @@ button {
 .sprite_icon2 {
   background: url(../img/sprite_icon2.png) no-repeat 0 9999px;
 }
-
+.sprite_icon3 {
+  background: url(../img/sprite_icon3.png) no-repeat 0 9999px;
+}
 .sprite_button {
   background: url(../img/sprite_button.png) no-repeat 0 9999px;
 }
@@ -136,6 +138,15 @@ button {
   bottom: 0;
   text-indent: -9999px;
   background: url(../img/sprite_cover.png) no-repeat -145px -57px;
+}
+.player_bar {
+  background: url(../img/player_bar.png) no-repeat 0 9999px;
+}
+.player_bar_new_icon {
+  background: url(../img/player_bar_new_icon.png) no-repeat 0 9999px;
+}
+.state_bar {
+  background: url(../img/state_bar.png) no-repeat 0 9999px;
 }
 .lyric-class .ant-message-notice-content {
   position: fixed;

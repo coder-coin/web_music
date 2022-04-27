@@ -26,10 +26,12 @@ const LTopList = memo((props) => {
                             <div className='list-item' key={item.id}>
                                 <div className='rank'>{index + 1}</div>
                                 <div className='info'>
-                                    <div className='name text-norwrap'>{item.name}</div>
+                                    <div className='name text-nowrap'>
+                                        <a href='/#' alt=''>{item.name}</a>
+                                    </div>
                                     <div className='operate'>
                                         <button className='btn play sprite_02'></button>
-                                        <button className='btn addto sprite_icon2'></button>
+                                        <button className='btn addto sprite_icon3'></button>
                                         <button className='btn favor sprite_02'></button>
                                     </div>
                                 </div>

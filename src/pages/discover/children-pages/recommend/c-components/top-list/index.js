@@ -26,7 +26,7 @@ const LTopListRecommend = memo(() => {
     return (
         <TopListRecommendWrapper>
             <LRecommendThemeHeader title='榜单' />
-            <div className='top'>
+            <div className='tops'>
                 <LTopList info={upTopList} />
                 <LTopList info={newTopList} />
                 <LTopList info={originalTopList} />

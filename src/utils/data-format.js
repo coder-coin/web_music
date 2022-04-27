@@ -13,3 +13,7 @@ export function countFormat (count) {
 export function imageSizeFormat (url, size) {
     return `${url}?param=${size}y${size}`
 }
+//歌曲资源地址格式化
+export function songSourceUrlFormat (id) {
+    return `https://music.163.com/song/media/outer/url?id=${id}.mp3`
+}

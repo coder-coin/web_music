@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const NewAlbumRecommendWrapper = styled.div`
-   margin-top: 50px;
   .content {
     height: 186px;
     background-color: #f5f5f5;

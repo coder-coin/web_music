@@ -29,7 +29,7 @@ const LNewAlbumRecommend = memo(() => {
                     onClick={e => carouselRef.current.prev()}
                 ></i>
                 <div className='album'>
-                    <Carousel dots={false} ref={carouselRef}>
+                    <Carousel dots={false} ref={carouselRef} speed={1500}>
                         {
                             [0, 1].map((itemA) => {
                                 return (

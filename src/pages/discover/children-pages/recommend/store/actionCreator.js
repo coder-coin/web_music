@@ -67,7 +67,7 @@ export const changeOriginalTopListAction = (res) => ({
 export const getTopListAction = (idx) => {
     return dispatch => {
         getTopList(idx).then(res => {
-            console.log(res)
+            // console.log(res)
             switch (idx) {
                 case 0:
                     dispatch(changeNewTopListAction(res))
