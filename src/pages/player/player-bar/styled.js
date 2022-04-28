@@ -37,6 +37,9 @@ export const Control = styled.div`
 
   .prev {
     background-position: 0 -130px;
+    &:hover {
+      background-position: -30px -130px;
+    }
   }
 
   .play {
@@ -44,10 +47,16 @@ export const Control = styled.div`
     height: 36px;
     margin: 0 8px;
     background-position: 0 ${props => props.isPlaying ? "-165px" : "-204px"};
+    &:hover {
+      background-position: ${props => props.isPlaying ? '-40px -165px' : '-40px -204px'};
+    }
   }
 
   .next {
     background-position: -80px -130px;
+    &:hover {
+      background-position: -110px -130px;
+    }
   }
 `
 
@@ -141,13 +150,22 @@ export const Operations = styled.div`
   }
   .pic_in_pic {
     background-position: 0 0;
+    &:hover {
+      background-position-y:-25px;
+    }
   }
   .favor {
     background-position: -88px -163px;
+    &:hover {
+      background-position: -88px -189px;
+    }
   }
 
   .share {
     background-position: -114px -163px;
+    &:hover {
+      background-position: -114px -189px;
+    }
   }
 
   .right {
@@ -157,6 +175,9 @@ export const Operations = styled.div`
     display: flex;
     .volume {
       background-position: -2px -248px;
+      &:hover {
+        background-position: -31px -248px;
+      }
     }
 
     .loop {
@@ -170,6 +191,19 @@ export const Operations = styled.div`
         return "-3px -344px"
     }
   }};
+  &:hover {
+    background-position: ${props => {
+    switch (props.playerMode) {
+      case 1:
+        return "-93px -248px"
+      case 2:
+        return "-93px -344px"
+      default:
+        return "-33px -344px"
+    }
+  }
+  };
+  }
     }
 
     .playlist {
@@ -177,13 +211,15 @@ export const Operations = styled.div`
         background-position: -42px -68px;
         display: block;
         padding-left: 21px;
-        background-position: -42px -68px;
         line-height: 27px;
         text-align: center;
         color: #666;
         text-shadow: 0 1px 0 #080707;
         text-indent: 0;
         text-decoration: none;
+        &:hover {
+          background-position: -42px -98px;
+        }
     }
   }
 `

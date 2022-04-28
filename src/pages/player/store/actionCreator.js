@@ -103,3 +103,8 @@ export const getLyricAction = (id) => {
         )
     }
 }
+//修改当前播放的歌词索引
+export const changeCurrentLyricIndexAction = (index) => ({
+    type: actionTypes.PLYAER_CHANGE_CURRENT_LYRIC_INDEX,
+    currentLyricIndex:index
+})

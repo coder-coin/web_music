@@ -2,7 +2,12 @@ import React, { memo, useState, useEffect, useRef, useCallback } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 
-import { getSongDetailAction, changeMusicPrevOrNextAction, chanePlayerModeAction } from '../store/actionCreator'
+import {
+    getSongDetailAction,
+    changeMusicPrevOrNextAction,
+    chanePlayerModeAction,
+    changeCurrentLyricIndexAction
+} from '../store/actionCreator'
 import { imageSizeFormat, songSourceUrlFormat } from '@/utils/data-format'
 
 import { NavLink } from 'react-router-dom'
@@ -18,11 +23,17 @@ const LPlayerBar = memo(() => {
 
     const audioRef = useRef()
     //redux hooks
-    const { currentSong, playList, playerMode } = useSelector(state => ({
-        currentSong: state.getIn(['player', 'currentSong']),
-        playList: state.getIn(['player', 'playList']),
-        playerMode: state.getIn(['player', 'playerMode'])
-    }), shallowEqual)
+    const { currentSong,
+        playList,
+        playerMode,
+        lyricList,
+        currentLyricIndex } = useSelector(state => ({
+            currentSong: state.getIn(['player', 'currentSong']),
+            playList: state.getIn(['player', 'playList']),
+            playerMode: state.getIn(['player', 'playerMode']),
+            lyricList: state.getIn(['player', 'lyricList']),
+            currentLyricIndex: state.getIn(['player', 'currentLyricIndex'])
+        }), shallowEqual)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getSongDetailAction(167876))
@@ -61,6 +72,17 @@ const LPlayerBar = memo(() => {
             setCurrentTime(e.target.currentTime * 1000)
             setProgress(currentTime / duration * 100)
         }
+        let i = 0
+        for (; i < lyricList.length; i++) {
+            if (currentTime < lyricList[i].time) {
+                break
+            }
+        }
+        if (currentLyricIndex !== i - 1) {
+            dispatch(changeCurrentLyricIndexAction(i - 1))
+            console.log(lyricList[i - 1].content)
+        }
+
     }
     //监听歌曲结束
     function handleMUusicEnd () {

@@ -5,7 +5,8 @@ const defaultState = Map({
     playList: [],
     currentSongIndex: 0,
     playerMode: 0, //播放模式：0为列表循环播放，1为列表随机播放，2为单曲循环播放
-    lyricList: []
+    lyricList: [],
+    currentLyricIndex: 0
 })
 function reducer (state = defaultState, action) {
     switch (action.type) {
@@ -19,6 +20,8 @@ function reducer (state = defaultState, action) {
             return state.set('playerMode', action.playerMode)
         case actionTypes.PLAYER_CHANGE_LYRIC_LIST:
             return state.set('lyricList', action.lyricList)
+        case actionTypes.PLYAER_CHANGE_CURRENT_LYRIC_INDEX:
+            return state.set('currentLyricIndex', action.currentLyricIndex)
         default:
             return state
     }
