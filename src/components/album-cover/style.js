@@ -20,7 +20,12 @@ export const AlbumCoverWrapper = styled.div`
       background-position: 0 ${props => props.bgp};
       text-indent: -9999px;
     }
+    .play-icon {
+      display: none;
+      text-indent: -9999px;
+    }
     &:hover .play-icon {
+        display: block;
         position: absolute;
         right: 10px;
         bottom: 5px;
@@ -29,7 +34,7 @@ export const AlbumCoverWrapper = styled.div`
         height: 22px;
         background-position: 0 -85px;
         text-indent: -9999px;
-    }  
+    }
   }
   .album-info {
     font-size: 12px;

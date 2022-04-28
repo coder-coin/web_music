@@ -161,7 +161,7 @@ export const Operations = styled.div`
 
     .loop {
       background-position: ${props => {
-    switch (props.sequence) {
+    switch (props.playerMode) {
       case 1:
         return "-66px -248px"
       case 2:

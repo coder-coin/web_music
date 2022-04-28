@@ -11,7 +11,7 @@ const LAlbumCover = memo((props) => {
                 <a href="/#" className="mask image_cover">
                     {info.name}
                 </a>
-                <a href='/#' className='play-icon sprite_icon'></a>
+                <a href='/#' className='play-icon sprite_icon unhover'>播放</a>
             </div>
             <div className="album-info">
                 <p className="name">

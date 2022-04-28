@@ -1,9 +1,20 @@
 import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import { getSongDetailAction } from '@/pages/player/store'
 import { imageSizeFormat } from '@/utils/data-format'
 import { TopListWrapper } from './style'
+
 const LTopList = memo((props) => {
     const { info } = props
     const { tracks = [] } = info
+
+    const dispatch = useDispatch()
+    //播放对应歌曲
+    function playMusic (item) {
+        // console.log(item.id)
+        dispatch(getSongDetailAction(item.id))
+    }
+
     return (
         <TopListWrapper>
             <div className='header'>
@@ -30,7 +41,7 @@ const LTopList = memo((props) => {
                                         <a href='/#' alt=''>{item.name}</a>
                                     </div>
                                     <div className='operate'>
-                                        <button className='btn play sprite_02'></button>
+                                        <button className='btn play sprite_02' onClick={e => playMusic(item)}></button>
                                         <button className='btn addto sprite_icon3'></button>
                                         <button className='btn favor sprite_02'></button>
                                     </div>

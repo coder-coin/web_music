@@ -6,6 +6,7 @@ import LPlaylist from '@/pages/discover/children-pages/playlist'
 import LDjradio from '@/pages/discover/children-pages/djradio'
 import LArtist from '@/pages/discover/children-pages/artist'
 import LAlbum from '@/pages/discover/children-pages/album'
+import SongPlayer from '@/pages/player'
 
 import LMine from '@/pages/mine'
 import LFriend from '@/pages/friend'
@@ -48,6 +49,10 @@ const useMusicRouter = () => {
                     path: 'album',
                     element: <LAlbum />
                 },
+                {
+                    path: 'song',
+                    element: <SongPlayer />
+                }
             ]
         },
         {
