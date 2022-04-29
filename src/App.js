@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import useMusicRouter from '@/router'
 //引入组件
@@ -12,7 +12,9 @@ const App = memo(() => {
   return (
     <Provider store={store}>
       <LAppHeader />
-      {useMusicRouter()}
+      <Suspense fallback={<h2>loading</h2>}>
+        {useMusicRouter()}
+      </Suspense>
       <LAppFooter />
       <LPlayerBar />
     </Provider>

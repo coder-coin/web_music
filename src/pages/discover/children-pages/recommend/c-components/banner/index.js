@@ -37,10 +37,10 @@ const LRecommendBanner = memo(() => {
                 <BannerLeft>
                     <Carousel
                         effect="fade"
-                        autoplay
                         ref={bannerRef}
                         beforeChange={getCurrentIndex}
                         autoplaySpeed={5000}
+                        dots={"banner_dots"}
                     >
                         {
                             topBanner.map((item, index) => {

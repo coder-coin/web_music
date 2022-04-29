@@ -1,16 +1,17 @@
+import { lazy } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
-import LDiscover from '@/pages/discover'
-import LRecommend from '@/pages/discover/children-pages/recommend'
-import LToplist from '@/pages/discover/children-pages/toplist'
-import LPlaylist from '@/pages/discover/children-pages/playlist'
-import LDjradio from '@/pages/discover/children-pages/djradio'
-import LArtist from '@/pages/discover/children-pages/artist'
-import LAlbum from '@/pages/discover/children-pages/album'
-import SongPlayer from '@/pages/player'
+const LDiscover = lazy(() => import('@/pages/discover'))
+const LRecommend = lazy(() => import('@/pages/discover/children-pages/recommend'))
+const LToplist = lazy(() => import('@/pages/discover/children-pages/toplist'))
+const LPlaylist = lazy(() => import('@/pages/discover/children-pages/playlist'))
+const LDjradio = lazy(() => import('@/pages/discover/children-pages/djradio'))
+const LArtist = lazy(() => import('@/pages/discover/children-pages/artist'))
+const LAlbum = lazy(() => import('@/pages/discover/children-pages/album'))
+const SongPlayer = lazy(() => import('@/pages/player'))
 
-import LMine from '@/pages/mine'
-import LFriend from '@/pages/friend'
-import LCreatorCenter from '@/pages/creatorCenter'
+const LMine = lazy(() => import('@/pages/mine'))
+const LFriend = lazy(() => import('@/pages/friend'))
+const LCreatorCenter = lazy(() => import('@/pages/creatorCenter'))
 /**
  * 配置路由
  * @returns routes

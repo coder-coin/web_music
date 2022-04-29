@@ -8,6 +8,36 @@ export const BannerWrapper = styled.div`
         position: relative;
         height: 285px;
     }
+     .slick-dots {
+       li {
+        width: 20px;
+         height: 20px;
+         button {
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        transition: none;
+        color: unset;
+        background: url(${btn}) no-repeat 0 9999px;
+        background-position: 3px -343px;
+        &:hover {
+          background-position: -16px -343px;
+        }
+       }
+       &.slick-active {
+        width: 20px;
+        margin-right: 0;
+        button {
+        background: url(${btn}) no-repeat 0 9999px;
+        background-position: -16px -343px;
+      }
+       }
+      }
+    .slick-dots-bottom {
+         bottom: 10px;
+       }
+  }
+
 `
 export const BannerLeft = styled.div`
      width:730px;

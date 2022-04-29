@@ -11,7 +11,7 @@ import {
 import { imageSizeFormat, songSourceUrlFormat } from '@/utils/data-format'
 
 import { NavLink } from 'react-router-dom'
-import { Slider } from 'antd'
+import { Slider, message } from 'antd'
 import { PlayerBarWrapper, Control, PlayInfo, Operations } from './styled'
 
 
@@ -80,7 +80,13 @@ const LPlayerBar = memo(() => {
         }
         if (currentLyricIndex !== i - 1) {
             dispatch(changeCurrentLyricIndexAction(i - 1))
-            console.log(lyricList[i - 1].content)
+            const content = lyricList[i - 1] && lyricList[i - 1].content
+            message.open({
+                key: 'lryic',
+                content: content,
+                duration: 1000,
+                className: 'lyric-class'
+            })
         }
 
     }
