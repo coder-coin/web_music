@@ -1,5 +1,11 @@
 import * as actionTypes from './constants'
-import { getRecommendBanner, getHotRecommend, getNewAlbum, getTopList } from '@/service/recommend'
+import {
+    getRecommendBanner,
+    getHotRecommend,
+    getNewAlbum,
+    getTopList,
+    getHotArtists
+} from '@/service/recommend'
 //修改推荐页的轮播图
 export const changeRecommendBannerAction = (res) => ({
     type: actionTypes.RECOMMEND_CHANGE_TOP_BANNER,
@@ -48,21 +54,25 @@ export const getNewAlbumAction = (limit) => {
     }
 }
 //修改飙升榜单
-export const changeUpTopListAction = (res) => ({
+const changeUpTopListAction = (res) => ({
     type: actionTypes.RECOMMEND_CHANGE_UP_TOP_LIST,
     upTopList: res.playlist
 })
 //修改新歌榜单
-export const changeNewTopListAction = (res) => ({
+const changeNewTopListAction = (res) => ({
     type: actionTypes.RECOMMEND_CHANGE_NEW_TOP_LIST,
     newTopList: res.playlist
 })
 //修改原创榜单
-export const changeOriginalTopListAction = (res) => ({
+const changeOriginalTopListAction = (res) => ({
     type: actionTypes.RECOMMEND_CHANGE_ORIGINAL_TOP_LIST,
     originalTopList: res.playlist
 })
-
+//修改热门歌手
+const changeHotArtistsAction = (res) => ({
+    type: actionTypes.RECOMMEND_CHANGE_HOT_ARTISTS,
+    hotArtists: res.artists
+})
 //获取榜单数据
 export const getTopListAction = (idx) => {
     return dispatch => {
@@ -83,6 +93,14 @@ export const getTopListAction = (idx) => {
             }
         }).catch(err => {
             console.log(err)
+        })
+    }
+}
+//获取热门歌手
+export const getHotArtistsAction = (limit) => {
+    return dispatch => {
+        getHotArtists(limit).then(res => {
+            dispatch(changeHotArtistsAction(res))
         })
     }
 }

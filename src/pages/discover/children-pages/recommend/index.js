@@ -4,6 +4,8 @@ import LHotRecommend from './c-components/hot-recommend'
 import LNewAlbumRecommend from './c-components/new-album'
 import LTopListRecommend from './c-components/top-list'
 import LUserProfile from './c-components/user-profile'
+import LHotArtists from './c-components/hot-artists'
+import LHotAnchor from './c-components/hot-anchor'
 import {
     RecommendWrapped,
     RecommendContent,
@@ -22,6 +24,8 @@ const LRecommend = memo(() => {
                 </RecommendContentLeft>
                 <RecommendContentRight>
                     <LUserProfile />
+                    <LHotArtists />
+                    <LHotAnchor />
                 </RecommendContentRight>
             </RecommendContent>
         </RecommendWrapped>

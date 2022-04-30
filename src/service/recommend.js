@@ -32,3 +32,12 @@ export function getTopList (idx) {
         }
     })
 }
+//获取人们歌手
+export function getHotArtists (limit) {
+    return request({
+        url: 'top/artists',
+        params: {
+            limit
+        }
+    })
+}

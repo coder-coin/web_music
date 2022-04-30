@@ -8,7 +8,8 @@ const defaultState = Map({
     newAlbums: [],
     upTopList: [],
     newTopList: [],
-    originalTopList: []
+    originalTopList: [],
+    hotArtists: []
 })
 
 function reducer (state = defaultState, action) {
@@ -25,6 +26,8 @@ function reducer (state = defaultState, action) {
             return state.set('newTopList', action.newTopList)
         case actionTypes.RECOMMEND_CHANGE_ORIGINAL_TOP_LIST:
             return state.set('originalTopList', action.originalTopList)
+        case actionTypes.RECOMMEND_CHANGE_HOT_ARTISTS:
+            return state.set('hotArtists', action.hotArtists)
         default:
             return state
     }
