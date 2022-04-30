@@ -3,6 +3,7 @@ import { Navigate, useRoutes } from 'react-router-dom'
 const LDiscover = lazy(() => import('@/pages/discover'))
 const LRecommend = lazy(() => import('@/pages/discover/children-pages/recommend'))
 const LToplist = lazy(() => import('@/pages/discover/children-pages/toplist'))
+const LListContent = lazy(() => import('@/pages/discover/children-pages/toplist/c-components/list-content'))
 const LPlaylist = lazy(() => import('@/pages/discover/children-pages/playlist'))
 const LDjradio = lazy(() => import('@/pages/discover/children-pages/djradio'))
 const LArtist = lazy(() => import('@/pages/discover/children-pages/artist'))
@@ -32,7 +33,13 @@ const useMusicRouter = () => {
                 },
                 {
                     path: 'toplist',
-                    element: <LToplist />
+                    element: <LToplist />,
+                    children: [
+                        {
+                            path: '',
+                            element: <LListContent />
+                        }
+                    ]
                 },
                 {
                     path: 'playlist',
