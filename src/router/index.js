@@ -27,6 +27,10 @@ const useMusicRouter = () => {
             element: <LDiscover />,
             children: [
                 {
+                    path: '',
+                    element: <Navigate to='recommend' />
+                },
+                {
                     path: 'recommend',
                     element: <LRecommend />
                 },

@@ -49,7 +49,7 @@ export const HeaderWrapperLeft = styled.div`
             text-align: center;
         }
 
-        &:hover a ,a.active {
+        &:hover a,.active {
             color: #fff;
             background-color: #000;
             text-decoration: none;

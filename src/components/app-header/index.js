@@ -10,7 +10,9 @@ const LAppHeader = memo(() => {
     const getBarListItem = (item, index) => {
         if (index <= 2) {
             return (
-                <NavLink to={item.link}>
+                <NavLink
+                    to={item.link}
+                >
                     <em> {item.title}</em>
                     <sub className='sprite_01 icon'></sub>
                 </NavLink>
