@@ -1,61 +1,56 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { getAllTopListCategoryAction } from '../../store/actionCreator'
+import { Link } from 'react-router-dom'
+import { changeActiveIndexAction, getAllTopListCategoryAction } from '../../store/actionCreator'
 import { imageSizeFormat } from '@/utils/data-format'
 import { ListCategoryWrapper } from './style'
 
 const LListCategory = memo(() => {
+    const [currentIndex, setcurrentIndex] = useState(0)
     const { topListCategory } = useSelector(state => ({
         topListCategory: state.getIn(['toplist', 'topListCategory'])
     }), shallowEqual)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAllTopListCategoryAction())
-    }, [dispatch])
+        dispatch(changeActiveIndexAction(currentIndex))
+    }, [dispatch, currentIndex])
+
+    //控制选择的排行榜
+    function handleSelect (index) {
+        setcurrentIndex(index)
+    }
+    const listCategory = topListCategory || []
     return (
         <ListCategoryWrapper>
-            <div className='list-header'>云音乐特色榜</div>
             <div className='category-list'>
                 {
-                    topListCategory.splice(0, 4).map((item, index) => {
+                    listCategory.map((item, index) => {
+                        let header = null
+                        if (index === 0 || index === 4) {
+                            header = <div className={index === 0 ? 'list-header' : 'list-header header-2'}>{index === 0 ? '云音乐特色榜' : '全球媒体榜'}</div>
+                        }
                         return (
-                            <NavLink
-                                to={{
-                                    pathname: '',
-                                    search: `id=${item.id}`
-                                }}
-                                className='item'
-                                key={item.name} >
-                                <div className='left'>
-                                    <img src={imageSizeFormat(item.coverImgUrl, 40)} alt={item.name}></img>
-                                </div>
-                                <div className='item-info'>
-                                    <p className='top-name'>{item.name}</p>
-                                    <p className='updateFrequency'>{item.updateFrequency}</p>
-                                </div>
-                            </NavLink>
-                        )
-                    })
-                }
-            </div>
-            <div className='list-header header-2'>全球媒体榜</div>
-            <div className='category-list'>
-                {
-                    topListCategory.splice(4).map((item, index) => {
-                        return (
-                            <NavLink to={{
-                                pathname: '',
-                                search: `id=${item.id}`
-                            }} className='item' key={item.id}>
-                                <div className='left'>
-                                    <img src={imageSizeFormat(item.coverImgUrl, 40)} alt={item.name}></img>
-                                </div>
-                                <div className='item-info'>
-                                    <p className='top-name'>{item.name}</p>
-                                    <p className='updateFrequency'>{item.updateFrequency}</p>
-                                </div>
-                            </NavLink>
+                            <div key={item.name} >
+                                {header}
+                                <Link
+                                    to={{
+                                        pathname: '',
+                                        search: `id=${item.id}`
+                                    }}
+                                    className={index === currentIndex ? 'item active' : 'item'}
+                                    onClick={e => handleSelect(index)}
+                                >
+                                    <div className='left'>
+                                        <img src={imageSizeFormat(item.coverImgUrl, 40)} alt={item.name}></img>
+                                    </div>
+                                    <div className='item-info'>
+                                        <p className='top-name'>{item.name}</p>
+                                        <p className='updateFrequency'>{item.updateFrequency}</p>
+                                    </div>
+                                </Link>
+                            </div>
+
                         )
                     })
                 }

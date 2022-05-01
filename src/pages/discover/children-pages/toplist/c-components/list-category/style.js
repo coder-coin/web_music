@@ -44,6 +44,9 @@ export const ListCategoryWrapper = styled.div`
                 
             
     
+        }
+        .active {
+            background: #e6e6e6;
         }      
     }
 `

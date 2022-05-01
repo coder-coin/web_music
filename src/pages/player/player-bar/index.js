@@ -36,7 +36,7 @@ const LPlayerBar = memo(() => {
         }), shallowEqual)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getSongDetailAction(167876))
+        dispatch(getSongDetailAction(1890256109))
     }, [dispatch])
     //获取当前歌曲
     useEffect(() => {
