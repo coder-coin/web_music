@@ -160,3 +160,9 @@ button {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
 }
+.mymusic_bg {
+  background: url(../img/mymusic-bg.png) no-repeat 0 9999px;
+}
+.nologin_bg {
+  background: url(../img/notlogin-bg.jpg) no-repeat center 0;
+}

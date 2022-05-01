@@ -45,6 +45,7 @@ const LAppHeader = memo(() => {
                     <NavLink className='login-btn' to='/'>登录</NavLink>
                 </HeaderWrapperRight>
             </div>
+            <div className='bar-bottom'></div>
         </HeaderWrapper>
     )
 })

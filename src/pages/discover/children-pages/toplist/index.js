@@ -1,6 +1,8 @@
-import React, { memo } from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { memo, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import {getAllTopListCategoryAction} from './store/actionCreator'
 import LListCategory from './c-components/list-category'
+import LListContent from './c-components/list-content'
 import {
     TopListWrapper,
     TopListWrapperContent,
@@ -8,6 +10,11 @@ import {
     TopListWrapperContentRight
 } from './style'
 const LToplist = memo(() => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        //获取排行榜分类
+        dispatch(getAllTopListCategoryAction())
+    }, [dispatch])
     return (
         <TopListWrapper>
             <TopListWrapperContent className='wrap-v2 wrap_bg2'>
@@ -15,7 +22,7 @@ const LToplist = memo(() => {
                     <LListCategory />
                 </TopListWrapperContentLeft>
                 <TopListWrapperContentRight>
-                    <Outlet />
+                    <LListContent />
                 </TopListWrapperContentRight>
             </TopListWrapperContent>
         </TopListWrapper>

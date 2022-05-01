@@ -17,6 +17,8 @@ export const getAllTopListCategoryAction = () => {
     return dispatch => {
         getAllTopListCategory().then(res => {
             dispatch(changeTopListCategoryAction(res))
+        }).catch(err => {
+            console.log(err)
         })
     }
 }
@@ -25,6 +27,8 @@ export const getTopListDetailAction = id => {
     return dispatch => {
         getTopListDetail(id).then(res => {
             dispatch(changeTopListDetailAction(res))
+        }).catch(err => {
+            console.log(err)
         })
     }
 }

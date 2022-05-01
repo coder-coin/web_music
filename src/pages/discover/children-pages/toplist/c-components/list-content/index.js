@@ -1,7 +1,5 @@
-import React, { memo, useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { useSearchParams } from 'react-router-dom'
-import { getTopListDetailAction } from '../../store/actionCreator'
+import React, { memo } from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
 import { imageSizeFormat, dateFormat } from '@/utils/data-format'
 
 import LSongOperationBar from '@/components/song-operation-bar'
@@ -14,13 +12,6 @@ const LListContent = memo(() => {
         activeIndex: state.getIn(['toplist', 'activeIndex']),
         topListDetail: state.getIn(['toplist', 'topListDetail'])
     }), shallowEqual)
-    const [searchParams] = useSearchParams()
-    const id = searchParams.get('id')
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getTopListDetailAction(id))
-    }, [dispatch, id])
-
     //
     const updateFrequency = topListCategory[activeIndex] && topListCategory[activeIndex].updateFrequency
     const listDetailTracks = topListDetail.tracks || []

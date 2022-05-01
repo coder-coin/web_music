@@ -11,8 +11,10 @@ export const HeaderWrapper = styled.div`
         justify-content: space-between;
     }
     .bar-bottom {
+        position: relative;
         height: 5px;
         background-color: #C20C0C;
+        z-index: 90;
     }
 `
 export const HeaderWrapperLeft = styled.div`
