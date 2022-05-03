@@ -2,9 +2,9 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { HeaderWrapper } from './style'
 const LRecommendThemeHeader = memo((props) => {
-    const { title, keyword } = props
+    const { title, keyword, left, right } = props
     return (
-        <HeaderWrapper className='sprite_02'>
+        <HeaderWrapper className={right ? 'sprite_02' : null} left={left}>
             <div className='left'>
                 <h3 className='title'>{title}</h3>
                 <div className='keyword'>
@@ -21,17 +21,22 @@ const LRecommendThemeHeader = memo((props) => {
                 </div>
             </div>
             <div className='right'>
-                <a href='/#'>更多</a>
-                <i className='icon sprite_02'></i>
+
+                <a href='/#'>{right ? '更多' : '更多>'}</a>
+                <i className={right ? `icon sprite_02` : `no-icon`}></i>
             </div>
         </HeaderWrapper>
     )
 })
 LRecommendThemeHeader.propTypes = {
     title: PropTypes.string.isRequired,
-    keyword: PropTypes.array
+    keyword: PropTypes.array,
+    left: PropTypes.bool,
+    right: PropTypes.bool,
 }
 LRecommendThemeHeader.defaultProps = {
-    keyword: []
+    keyword: [],
+    left: true,
+    right: true
 }
 export default LRecommendThemeHeader

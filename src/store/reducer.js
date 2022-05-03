@@ -3,11 +3,13 @@ import { reducer as recommendReducer } from '@/pages/discover/children-pages/rec
 import { reducer as playerReducer } from '@/pages/player/store'
 import { reducer as topListReducer } from '@/pages/discover/children-pages/toplist/store'
 import { reducer as playListReducer } from '@/pages/discover/children-pages/playlist/store'
+import { reducer as djradioReducer } from '@/pages/discover/children-pages/djradio/store'
 const combineReducer = combineReducers({
     recommend: recommendReducer,
     player: playerReducer,
     toplist: topListReducer,
-    playlist: playListReducer
+    playlist: playListReducer,
+    djradio: djradioReducer
 })
 
 export default combineReducer
