@@ -132,6 +132,7 @@ export const ListContentBodyWrapper = styled.div`
             height: 17px;
             background-position: 0 -103px;
             text-indent: -9999px;
+            cursor: pointer;
             &:hover {
                 background-position:  0 -128px;
             }

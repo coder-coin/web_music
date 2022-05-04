@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
-import { shallowEqual, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { getSongDetailAction } from '@/pages/player/store/actionCreator'
 import { imageSizeFormat, dateFormat } from '@/utils/data-format'
 
 import LSongOperationBar from '@/components/song-operation-bar'
@@ -15,6 +16,13 @@ const LListContent = memo(() => {
     //
     const updateFrequency = topListCategory[activeIndex] && topListCategory[activeIndex].updateFrequency
     const listDetailTracks = topListDetail.tracks || []
+
+    const dispatch = useDispatch()
+    //播放音乐
+    function playMusic (id) {
+        dispatch(getSongDetailAction(id))
+    }
+
     return (
         <ListContentWrapper>
             <ListContentHeaderWrapper>
@@ -64,7 +72,7 @@ const LListContent = memo(() => {
                                                         index < 3 ?
                                                             (<img src={imageSizeFormat(item.al.picUrl, 50)} alt="" />) : null
                                                     }
-                                                    <a href='/#' className="play sprite_table">播放</a>
+                                                    <i  className="play sprite_table" onClick={e => playMusic(item.id)}>播放</i>
                                                     <a href='/#' className="name">{item.name}</a>
                                                     <span className='alia'>{item.alia.length > 0 ? `-(${item.alia}) ` : null}</span>
                                                 </div>
