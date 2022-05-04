@@ -101,6 +101,9 @@ button {
 .wrap_bg2 {
   background: url(../img/wrap-bg2.png) repeat-y center 0;
 }
+.wrap_bg3 {
+  background: url(../img/wrap-bg3.png) repeat-y center 0;
+}
 .sprite_01 {
   background: url(../img/sprite_01.png) no-repeat 0 9999px;
 }
