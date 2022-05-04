@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import wrap_bg from '@/assets/img/wrap-bg.png'
+import wrap_bg from '@/assets/img/wrap-bg4.png'
 export const PlayerWrapper = styled.div`
   .content {
     background: url(${wrap_bg}) repeat-y;

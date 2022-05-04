@@ -1,25 +1,33 @@
 import React, { memo } from 'react'
+import {  useDispatch, } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+import { chanegSelectedSongIdAction, } from './store/actionCreator'
+import LPlayerInfo from './c-components/player-info'
+import LRelevant from './c-components/player-ralevant'
 import {
-    PlayerWrapper,
-    PlayerLeft,
-    PlayerRight
+  PlayerWrapper,
+  PlayerLeft,
+  PlayerRight
 } from './style'
+
+
 const SongPlayer = memo(() => {
-    return (
-        <PlayerWrapper>
-        <div className="content wrap-v2">
-          <PlayerLeft>
-            <h2>HYPlayerInfo</h2>
-            <h2>HYSongContent</h2>
-          </PlayerLeft>
-          <PlayerRight>
-            <h2>HYSimiPlaylist</h2>
-            <h2>HYSimiSong</h2>
-            <h2>Download</h2>
-          </PlayerRight>
-        </div>
-      </PlayerWrapper>
-    )
+  let [searchParams] = useSearchParams()
+  const id = parseInt(searchParams.get('id'))
+  const dispatch = useDispatch()
+  dispatch(chanegSelectedSongIdAction(id))
+  return (
+    <PlayerWrapper>
+      <div className="content wrap-v2">
+        <PlayerLeft>
+          <LPlayerInfo />
+        </PlayerLeft>
+        <PlayerRight>
+          <LRelevant />
+        </PlayerRight>
+      </div>
+    </PlayerWrapper>
+  )
 })
 
 export default SongPlayer

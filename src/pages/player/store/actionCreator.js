@@ -1,5 +1,5 @@
 import * as actionTypes from './constants'
-import { getSongDetail, getLyric } from '@/service/player'
+import { getSongDetail, getLyric, getSimiPlaylist, getSimiSong } from '@/service/player'
 import { parseLyric } from '@/utils/parse-lyric'
 //修改当前歌曲
 const changeCurrentSongAction = (res) => ({
@@ -21,7 +21,31 @@ const changeLyricListAction = (lyricList) => ({
     type: actionTypes.PLAYER_CHANGE_LYRIC_LIST,
     lyricList
 })
+//修改选择的歌曲
+const changeSelectedSongAction = (song) => ({
+    type: actionTypes.PLAYER_CHANGE_SELECTED_SONG,
+    selectedSong: song
+})
+//修改歌曲详情页的歌词
+const changeSelectedSongLyricAction = (lyricList) => ({
+    type: actionTypes.PLAYER_CHANGE_SELECTED_SONG_LYRIC,
+    selectedSongLyric: lyricList
+})
+//修改相似歌单和歌曲
+const changeSimiPlaylistAction = (res) => ({
+    type: actionTypes.PLAYER_CHANGE_SIMI_PLAYLIST,
+    simiPlaylist: res.playlists
+})
 
+const changeSimiSongsAction = (res) => ({
+    type: actionTypes.PLAYER_CHANGE_SIMI_SONGS,
+    simiSongs: res.songs
+})
+//修改选中歌曲的id
+export const chanegSelectedSongIdAction = (id) => ({
+    type: actionTypes.PLAYER_CHANGE_SELECTED_SONG_ID,
+    selectedSongId: id
+})
 //修改当前播放模式
 export const chanePlayerModeAction = (playerMode) => ({
     type: actionTypes.PLAYER_CHANGE_MODE,
@@ -106,5 +130,44 @@ export const getLyricAction = (id) => {
 //修改当前播放的歌词索引
 export const changeCurrentLyricIndexAction = (index) => ({
     type: actionTypes.PLYAER_CHANGE_CURRENT_LYRIC_INDEX,
-    currentLyricIndex:index
+    currentLyricIndex: index
 })
+
+export const getSimiPlaylistAction = () => {
+    return (dispatch, getState) => {
+        const id = getState().getIn(["player", "selectedSong"]).id
+        if (!id) return
+
+        getSimiPlaylist(id).then(res => {
+            dispatch(changeSimiPlaylistAction(res))
+        })
+    }
+}
+
+export const getSimiSongAction = () => {
+    return (dispatch, getState) => {
+        const id = getState().getIn(["player", "selectedSong"]).id
+        if (!id) return
+        getSimiSong(id).then(res => {
+            dispatch(changeSimiSongsAction(res))
+        })
+    }
+}
+export const getSelectedSongDetailAction = (id) => {
+    return dispatch => {
+        getSongDetail(id).then(res => {
+            const song = res.songs && res.songs[0]
+            dispatch(changeSelectedSongAction(song))
+        })
+    }
+}
+export const getSelectedSongLyricAction = (id) => {
+    return dispatch => {
+        getLyric(id).then(res => {
+            //解析歌词
+            const lyricList = parseLyric(res.lrc.lyric)
+            dispatch(changeSelectedSongLyricAction(lyricList))
+        }
+        )
+    }
+}

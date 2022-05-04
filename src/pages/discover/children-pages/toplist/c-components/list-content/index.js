@@ -5,6 +5,7 @@ import { imageSizeFormat, dateFormat } from '@/utils/data-format'
 
 import LSongOperationBar from '@/components/song-operation-bar'
 import LSongThemeHeader from '@/components/song-theme-header'
+import { NavLink } from 'react-router-dom'
 import { ListContentWrapper, ListContentHeaderWrapper, ListContentBodyWrapper } from './style'
 const LListContent = memo(() => {
 
@@ -72,8 +73,11 @@ const LListContent = memo(() => {
                                                         index < 3 ?
                                                             (<img src={imageSizeFormat(item.al.picUrl, 50)} alt="" />) : null
                                                     }
-                                                    <i  className="play sprite_table" onClick={e => playMusic(item.id)}>播放</i>
-                                                    <a href='/#' className="name">{item.name}</a>
+                                                    <i className="play sprite_table" onClick={e => playMusic(item.id)}>播放</i>
+                                                    <NavLink to={{
+                                                        pathname: '/discover/song',
+                                                        search: `id=${item.id}`
+                                                    }} className="name">{item.name}</NavLink>
                                                     <span className='alia'>{item.alia.length > 0 ? `-(${item.alia}) ` : null}</span>
                                                 </div>
                                             </td>

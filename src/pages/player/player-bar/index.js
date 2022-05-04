@@ -159,7 +159,7 @@ const LPlayerBar = memo(() => {
                     <NavLink to='/discover/song' className='mask player_bar'>{currentSong.name}</NavLink>
                     <div className='info'>
                         <div className='song'>
-                            <a className='song-name' href='/#'>{currentSong.name}</a>
+                            <NavLink to='/discover/song' className='song-name'>{currentSong.name}</NavLink>
                             <a className='singer-name' href='/#'>{singerName}</a>
                         </div>
                         <div className='progress'>

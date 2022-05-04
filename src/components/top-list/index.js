@@ -1,8 +1,9 @@
 import React, { memo } from 'react'
 import { useDispatch } from 'react-redux'
-import { getSongDetailAction } from '@/pages/player/store'
+import { getSongDetailAction } from '@/pages/player/store/actionCreator'
 import { imageSizeFormat } from '@/utils/data-format'
 import { TopListWrapper } from './style'
+import { NavLink } from 'react-router-dom'
 
 const LTopList = memo((props) => {
     const { info } = props
@@ -15,6 +16,7 @@ const LTopList = memo((props) => {
         dispatch(getSongDetailAction(item.id))
     }
 
+
     return (
         <TopListWrapper>
             <div className='header'>
@@ -23,7 +25,7 @@ const LTopList = memo((props) => {
                     <a href='/#' className='image_cover'>toplist</a>
                 </div>
                 <div className='info'>
-                    <a href='/#'>{info.name}</a>
+                    <NavLink to='/discover/toplist'>{info.name}</NavLink>
                     <div className='operation'>
                         <button className='btn play sprite_02'></button>
                         <button className='btn favor sprite_02'></button>
@@ -38,7 +40,10 @@ const LTopList = memo((props) => {
                                 <div className='rank'>{index + 1}</div>
                                 <div className='info'>
                                     <div className='name text-nowrap'>
-                                        <a href='/#' alt=''>{item.name}</a>
+                                        <NavLink to={{
+                                            pathname: '/discover/song',
+                                            search: `id=${item.id}`
+                                        }} alt=''>{item.name}</NavLink>
                                     </div>
                                     <div className='operate'>
                                         <button className='btn play sprite_02' onClick={e => playMusic(item)}></button>

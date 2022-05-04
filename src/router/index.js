@@ -7,7 +7,8 @@ const LPlaylist = lazy(() => import('@/pages/discover/children-pages/playlist'))
 const LDjradio = lazy(() => import('@/pages/discover/children-pages/djradio'))
 const LArtist = lazy(() => import('@/pages/discover/children-pages/artist'))
 const LAlbum = lazy(() => import('@/pages/discover/children-pages/album'))
-const SongPlayer = lazy(() => import('@/pages/player'))
+const LPlayer = lazy(() => import('@/pages/player'))
+
 
 const LMine = lazy(() => import('@/pages/mine'))
 const LFriend = lazy(() => import('@/pages/friend'))
@@ -56,7 +57,7 @@ const useMusicRouter = () => {
                 },
                 {
                     path: 'song',
-                    element: <SongPlayer />
+                    element: <LPlayer />
                 }
             ]
         },
@@ -67,7 +68,8 @@ const useMusicRouter = () => {
         {
             path: '/friend',
             element: <LFriend />
-        }, {
+        },
+        {
             path: '/creatorCenter',
             element: <LCreatorCenter />
         }
