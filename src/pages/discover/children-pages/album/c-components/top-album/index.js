@@ -38,11 +38,14 @@ const LTopAlbum = memo(() => {
       <div className="album-list">
         {
           topAlbums.map((item, index) => {
-            return <LAlbumCover size={130}
-              width={153}
-              bgp={"-845px"}
-              key={item.id}
-              info={item} />
+            return (<div className='item' key={item.id}>
+              <LAlbumCover size={130}
+                width={153}
+                bgp={"-845px"}
+                info={item}
+              />
+            </div>)
+
           })
         }
       </div>

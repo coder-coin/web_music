@@ -6,5 +6,8 @@ export const HotAlbumWrapper = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 20px;
+    .item {
+        margin-bottom: 30px;
+    }
   }
 `
