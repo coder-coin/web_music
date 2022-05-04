@@ -4,9 +4,19 @@ export const ItemWrapper = styled.div`
   width: 130px;
   margin-top: 15px;
   .image {
+    position: relative;
     img {
       width: 130px;
       height: 130px;
+    }
+    .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: 0 -680px;
+    text-indent: -9999px;
     }
   }
   .info {

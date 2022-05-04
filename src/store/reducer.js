@@ -5,13 +5,15 @@ import { reducer as topListReducer } from '@/pages/discover/children-pages/topli
 import { reducer as playListReducer } from '@/pages/discover/children-pages/playlist/store'
 import { reducer as djradioReducer } from '@/pages/discover/children-pages/djradio/store'
 import { reducer as artistReducer } from '@/pages/discover/children-pages/artist/store'
+import { reducer as albumReducer } from '@/pages/discover/children-pages/album/store'
 const combineReducer = combineReducers({
     recommend: recommendReducer,
     player: playerReducer,
     toplist: topListReducer,
     playlist: playListReducer,
     djradio: djradioReducer,
-    artist: artistReducer
+    artist: artistReducer,
+    album: albumReducer
 })
 
 export default combineReducer

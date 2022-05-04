@@ -1,8 +1,13 @@
 import React, { memo } from 'react'
-
+import LHotAlbum from './c-components/hot-album'
+import LTopAlbum from './c-components/top-album'
+import { AblumWrapper } from './style'
 const LAlbum = memo(() => {
     return (
-        <div>LAlbum</div>
+        <AblumWrapper className='wrap-v2'>
+            <LHotAlbum />
+            <LTopAlbum />
+        </AblumWrapper>
     )
 })
 

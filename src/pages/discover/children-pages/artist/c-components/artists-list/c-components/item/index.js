@@ -13,6 +13,7 @@ const LArtistItemV1 = memo((props) => {
                 index < 10 && (
                     <div className="image">
                         <img src={imageSizeFormat(info.img1v1Url, 130)} alt="" />
+                        <a href='/#' className='mask sprite_cover'>{info.name}</a>
                     </div>
                 )
             }
