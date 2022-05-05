@@ -1,4 +1,4 @@
-import React, { memo, useState, useMemo } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
 import { chanegSelectedSongIdAction, getSelectedSongDetailAction, getSelectedSongLyricAction } from '../../store/actionCreator'
 import { imageSizeFormat } from '@/utils/data-format'
@@ -21,7 +21,8 @@ const LPlayerInfo = memo((props) => {
     }), shallowEqual)
 
     const dispatch = useDispatch()
-    useMemo(() => {
+    //异步请求后的数据中的非简单类型的数据展示需要进行非空判断，否则会报错
+    useEffect(() => {
         dispatch(chanegSelectedSongIdAction(id))
         dispatch(getSelectedSongDetailAction())
         dispatch(getSelectedSongLyricAction())
