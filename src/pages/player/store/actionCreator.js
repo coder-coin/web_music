@@ -21,6 +21,12 @@ const changeLyricListAction = (lyricList) => ({
     type: actionTypes.PLAYER_CHANGE_LYRIC_LIST,
     lyricList
 })
+
+//修改选中歌曲的id
+export const chanegSelectedSongIdAction = (id) => ({
+    type: actionTypes.PLAYER_CHANGE_SELECTED_SONG_ID,
+    selectedSongId: id
+})
 //修改选择的歌曲
 const changeSelectedSongAction = (song) => ({
     type: actionTypes.PLAYER_CHANGE_SELECTED_SONG,
@@ -40,11 +46,6 @@ const changeSimiPlaylistAction = (res) => ({
 const changeSimiSongsAction = (res) => ({
     type: actionTypes.PLAYER_CHANGE_SIMI_SONGS,
     simiSongs: res.songs
-})
-//修改选中歌曲的id
-export const chanegSelectedSongIdAction = (id) => ({
-    type: actionTypes.PLAYER_CHANGE_SELECTED_SONG_ID,
-    selectedSongId: id
 })
 //修改当前播放模式
 export const chanePlayerModeAction = (playerMode) => ({
@@ -153,21 +154,27 @@ export const getSimiSongAction = () => {
         })
     }
 }
-export const getSelectedSongDetailAction = (id) => {
-    return dispatch => {
+export const getSelectedSongDetailAction = () => {
+    return (dispatch, getState) => {
+        const id = getState().getIn(['player', 'selectedSongId'])
         getSongDetail(id).then(res => {
             const song = res.songs && res.songs[0]
             dispatch(changeSelectedSongAction(song))
+        }).catch(err => {
+            console.log(err)
         })
     }
 }
-export const getSelectedSongLyricAction = (id) => {
-    return dispatch => {
+export const getSelectedSongLyricAction = () => {
+    return (dispatch, getState) => {
+        const id = getState().getIn(['player', 'selectedSongId'])
         getLyric(id).then(res => {
             //解析歌词
             const lyricList = parseLyric(res.lrc.lyric)
             dispatch(changeSelectedSongLyricAction(lyricList))
         }
-        )
+        ).catch(err => {
+            console.log(err)
+        })
     }
 }

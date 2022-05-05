@@ -1,40 +1,31 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState, useMemo } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
-
-import { getSelectedSongLyricAction, getSelectedSongDetailAction } from '../../store/actionCreator'
+import { chanegSelectedSongIdAction, getSelectedSongDetailAction, getSelectedSongLyricAction } from '../../store/actionCreator'
 import { imageSizeFormat } from '@/utils/data-format'
 
-import HYSongOperationBar from 'components/song-operation-bar'
+import LSongOperationBar from 'components/song-operation-bar'
 import {
     InfoWrapper,
     InfoLeft,
     InfoRight
 } from './style'
 
-const LPlayerInfo = memo(() => {
+const LPlayerInfo = memo((props) => {
+    const { id } = props
     // props and hooks
     const [isSpread, setIsSpread] = useState(false)
     // redux hooks
-    const { selectedSong, selectedSongLyric, selectedSongId } = useSelector(state => ({
+    const { selectedSong, selectedSongLyric } = useSelector(state => ({
         selectedSong: state.getIn(["player", "selectedSong"]),
-        selectedSongLyric: state.getIn(["player", "selectedSongLyric"]),
-        selectedSongId: state.getIn(['player', 'selectedSongId'])
+        selectedSongLyric: state.getIn(["player", "selectedSongLyric"])
     }), shallowEqual)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getSelectedSongDetailAction(selectedSongId))
-        dispatch(getSelectedSongLyricAction(selectedSongId))
-    }, [dispatch, selectedSongId])
 
-    //判断是否为空，数据在组件渲染完成后加载，此时可能数据还未请求到
-    let song = null
-    let lyric = null
-    if (selectedSong) {
-        song = selectedSong
-    }
-    if (selectedSongLyric) {
-        lyric = selectedSongLyric
-    }
+    const dispatch = useDispatch()
+    useMemo(() => {
+        dispatch(chanegSelectedSongIdAction(id))
+        dispatch(getSelectedSongDetailAction())
+        dispatch(getSelectedSongLyricAction())
+    }, [dispatch, id])
     // handle code
     const totalLyricCount = isSpread ? selectedSongLyric.length : 13
 
@@ -42,7 +33,7 @@ const LPlayerInfo = memo(() => {
         <InfoWrapper>
             <InfoLeft>
                 <div className="image">
-                    <img src={imageSizeFormat(song.al.picUrl, 130)} alt="" />
+                    <img src={imageSizeFormat(selectedSong.al && selectedSong.al.picUrl, 130)} alt="" />
                     <span className="cover image_cover"></span>
                 </div>
                 <div className="link">
@@ -53,18 +44,18 @@ const LPlayerInfo = memo(() => {
             <InfoRight isSpread={isSpread}>
                 <div className="header">
                     <i className="sprite_icon3"></i>
-                    <h3 className="title">{song.name}</h3>
+                    <h3 className="title">{selectedSong.name}</h3>
                 </div>
                 <div className="singer">
                     <span className="label">歌手：</span>
-                    <a href="/#" className="name">{song.ar[0].name}</a>
+                    <a href="/#" className="name">{selectedSong.ar && selectedSong.ar[0].name}</a>
                 </div>
                 <div className="album">
                     <span className="label">所属专辑：</span>
-                    <a href="/#" className="name">{song.al.name}</a>
+                    <a href="/#" className="name">{selectedSong.al && selectedSong.al.name}</a>
                 </div>
 
-                <HYSongOperationBar favorTitle="收藏"
+                <LSongOperationBar favorTitle="收藏"
                     shareTitle="分享"
                     downloadTitle="下载"
                     commentTitle="(167366)" />
@@ -72,8 +63,8 @@ const LPlayerInfo = memo(() => {
                 <div className="lyric">
                     <div className="lyric-info">
                         {
-                            lyric.slice(0, totalLyricCount).map((item, index) => {
-                                return <p key={item.content} className="text">{item.content}</p>
+                            selectedSongLyric && selectedSongLyric.slice(0, totalLyricCount).map((item, index) => {
+                                return <p key={index} className="text">{item.content}</p>
                             })
                         }
                     </div>
